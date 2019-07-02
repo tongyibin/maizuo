@@ -1,5 +1,5 @@
 import * as Types from './actionTypes'
-import http from '@/utils/http.js'
+import http from '@/utils/http1.js'
 
 export const onbannerlist = data => ({
   type: Types.SET_BANNER_LIST,

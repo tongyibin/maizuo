@@ -21,6 +21,8 @@ const Main = Loadable({
   loading: () => <div>加载中</div>
 })
 
+
+
 export default class App extends Component {
   render() {
     return (
