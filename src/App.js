@@ -24,6 +24,13 @@ const Mine = Loadable({
   loading: () => <div>加载中</div>
 })
 
+const Login = Loadable({
+
+  loader: () => import('./views/login'),
+
+  loading: () => <div>加载中</div>
+})
+
 export default class App extends Component {
   render() {
     return (
@@ -34,6 +41,7 @@ export default class App extends Component {
               <Route path="/mine" component={Mine} />
               <Route path="/cinema" component={Cinema} />
               <Route path="/movie" component={Movie} />
+              <Route path="/login" component={Login} />
               <Redirect to="/movie" />
             </Switch>
           </MainWarp>
