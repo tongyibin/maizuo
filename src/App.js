@@ -45,12 +45,12 @@ export default class App extends Component {
   onscroll() {
     // console.log(window.scrollY)
     // 滚动条距离顶部的高度
-    let scrolltop = document.getElementsByClassName('elkAqb')[0].scrollTop;
+    // let scrolltop = document.getElementsByClassName('elkAqb')[0].scrollTop;
 
     // 页面的高度
-    let scrollheight = document.getElementsByClassName('movie-main')[0].scrollHeight
-    // 可视区域的高度
-    let clientheight = document.getElementsByClassName('movie-main')[0].clientHeight
-    console.log(scrolltop, scrollheight, clientheight)
+    // let scrollheight = document.getElementsByClassName('movie-main')[0].scrollHeight
+    // // 可视区域的高度
+    // let clientheight = document.getElementsByClassName('movie-main')[0].clientHeight
+    // console.log(scrolltop, scrollheight, clientheight)
   }
 }

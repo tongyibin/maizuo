@@ -1,6 +1,6 @@
 // 我的页面
 import React, { Component } from 'react'
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
+import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import {HeardWarp,CenterWarp,AvatWarp,ImgWarp,AvdivWarp,UlWarp,LiWarp,DyddImgWarp,DyddDivWarp,DyddSpanWarp,
   SpddImgWarp,SpddDivWarp,MarginSetWarp,MzjImgWarp,MzjSpanWarp,MzjImgIconWarp,YeSpan} from '../../styles/mineStyle'
 
@@ -10,10 +10,11 @@ export default class index extends Component {
 
     return (
       <HeardWarp>
+        <Link to='/login'>
         <CenterWarp>
           <AvatWarp>
             <ImgWarp src={require('./img/loginpoto.png')} />
-            <AvdivWarp><NavLink to="/login">立即登录</NavLink></AvdivWarp>
+            <AvdivWarp>立即登录</AvdivWarp>
           </AvatWarp>
           <UlWarp>
               <LiWarp>
@@ -52,7 +53,9 @@ export default class index extends Component {
             <MzjImgIconWarp src={require('./img/up.png')}/>
           </MarginSetWarp>
         </CenterWarp>
+        </Link>
       </HeardWarp>
+
     )
   }
 

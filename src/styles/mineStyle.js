@@ -12,7 +12,7 @@ export const CenterWarp = styled.div`
     left: 0;
     font-size: 15px;
     background: #f4f4f4;
-    margin-bottom: 59px;
+
 `
 
 export const AvatWarp = styled.div`

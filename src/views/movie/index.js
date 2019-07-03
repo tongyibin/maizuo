@@ -19,9 +19,9 @@ export default class index extends Component {
     // 滚动条距离顶部的高度
     let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
     // 页面的高度
-    let scrollheight = document.getElementsByClassName('movie-main')[0].scrollHeight
-    // 可视区域的高度
-    let clientheight = document.getElementsByClassName('movie-main')[0].clientHeight
+    // let scrollheight = document.getElementsByClassName('movie-main')[0].scrollHeight
+    // // 可视区域的高度
+    // let clientheight = document.getElementsByClassName('movie-main')[0].clientHeight
     // console.log(scrolltop, scrollheight, clientheight)
   }
 
