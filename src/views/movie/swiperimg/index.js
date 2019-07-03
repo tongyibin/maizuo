@@ -40,6 +40,11 @@ class Swiperimg extends Component {
     // 轮播图
     var mySwiper = new Swiper(this.refs.myswiper, {
       loop: true, // 循环模式选项
+      autoplay: {
+        delay: 2500,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+      },
       // 如果需要分页器
       pagination: {
         el: '.swiper-pagination'
@@ -47,6 +52,7 @@ class Swiperimg extends Component {
     })
     console.log(mySwiper)
   }
+
 
 
 }

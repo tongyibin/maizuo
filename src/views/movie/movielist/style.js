@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-export const MainWarp= Styled.div`
+export const MainWarp = Styled.div`
   height:100%;
   display: flex;
   justify-content: space-around;
@@ -13,7 +13,7 @@ export const MainWarp= Styled.div`
     color: #ff5f16;
     position: relative;
     margin-top:-1px;
-    border-bottom:2px solid #ff5f16;
+    border-bottom:4px solid #ff5f16;
   }
 
 `

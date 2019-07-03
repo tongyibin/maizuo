@@ -7,7 +7,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <div style={{height:'100%'}}>
+      <div style={{ height: '100%' }}>
         <MainWarp>
           <NavLink to="/movielists/1">正在热映</NavLink>
           <NavLink to="/movielists/2">即将上映</NavLink>
@@ -17,6 +17,8 @@ export default class index extends Component {
         <Redirect to="/movielists?1" />
       </div>
     )
+  }
+  componentDidMount() {
   }
 }
 
