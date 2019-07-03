@@ -1,4 +1,5 @@
 // 老二文件
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import Loadable from 'react-loadable';
 import { Icon } from 'antd';
@@ -6,53 +7,44 @@ import { HashRouter as Router, Route, NavLink, Switch, Redirect } from 'react-ro
 import { HomeWarp, NavWarp, MainWarp } from './styles/style.js';
 
 const Cinema = Loadable({
+=======
+import React, { Component } from 'react'
+import Loadable from 'react-loadable'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+const Login = Loadable({
+>>>>>>> f77ecb4a4689ee7d134d53cb3984a1c2546f9b87
   // 懒加载
   //需要异步加载的组件
-  loader: () => import('./views/cinema'),
+  // 登录
+  loader: () => import('./views/login'),
   // 加载中的提示组件
   loading: () => <div>加载中</div>
 })
-const Movie = Loadable({
-
-  loader: () => import('./views/movie'),
-
+// 城市选择
+const City = Loadable({
+  loader: () => import('./views/city'),
   loading: () => <div>加载中</div>
 })
-const Mine = Loadable({
-
-  loader: () => import('./views/mine'),
-
+// 主页面
+const Main = Loadable({
+  loader: () => import('./views/index.js'),
   loading: () => <div>加载中</div>
 })
+
+
 
 export default class App extends Component {
   render() {
     return (
       <Router>
-        <HomeWarp>
-          <MainWarp>
-            <Switch>
-              <Route path="/mine" component={Mine} />
-              <Route path="/cinema" component={Cinema} />
-              <Route path="/movie" component={Movie} />
-              <Redirect to="/movie" />
-            </Switch>
-          </MainWarp>
-          <NavWarp>
-            <NavLink to="/movie" className="nav-bottom"  >
-              <Icon type="fire" style={{ fontSize: '21px' }} />
-              <span>电影</span>
-            </NavLink>
-            <NavLink to="/cinema" className="nav-bottom">
-              <Icon type="dot-chart" style={{ fontSize: '21px' }} />
-              <span>影院</span>
-            </NavLink>
-            <NavLink to="/mine" className="nav-bottom">
-              <Icon type="user" style={{ fontSize: '21px' }} />
-              <span>我的</span>
-            </NavLink>
-          </NavWarp>
-        </HomeWarp>
+
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/city" component={City} />
+          <Route path="/" component={Main} />
+          <Redirect to="/" />
+        </Switch>
+
       </Router>
     )
   }
