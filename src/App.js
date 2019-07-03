@@ -1,9 +1,10 @@
 // 老二文件
-import React, { Component } from 'react'
-import Loadable from 'react-loadable'
-import { Icon } from 'antd'
-import { HashRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom'
-import { HomeWarp, NavWarp, MainWarp } from './styles/style.js'
+import React, { Component } from 'react';
+import Loadable from 'react-loadable';
+import { Icon } from 'antd';
+import { HashRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { HomeWarp, NavWarp, MainWarp } from './styles/style.js';
+
 const Cinema = Loadable({
   // 懒加载
   //需要异步加载的组件
