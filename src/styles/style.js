@@ -8,7 +8,7 @@ export const HomeWarp = styled.div`
 `
 // 内容
 export const MainWarp = styled.div`
-  background:#ccc;
+  background:#f4f4f4;
   height:100%;
   overflow-y: auto;
 `
@@ -30,4 +30,3 @@ export const NavWarp = styled.div`
     color: #ff5f16;
   }
 `
-
