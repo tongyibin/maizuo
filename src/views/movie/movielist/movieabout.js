@@ -55,10 +55,10 @@ export default class Movieabout extends Component {
   }
   componentDidMount() {
     this.getmovielist()
-    window.addEventListener('scroll', this.onscroll, true);
+    document.getElementsByClassName('elkAqb')[0].addEventListener('scroll', this.onscroll);
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onscroll, true)
+    document.getElementsByClassName('elkAqb')[0].removeEventListener('scroll', this.onscroll)
     console.log(2)
   }
   // 获取影片数据

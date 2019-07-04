@@ -29,7 +29,6 @@ export default class index extends Component {
         <MainWarp className="movie-nav">
           <NavLink to="/movielists">正在热映</NavLink>
           <NavLink to="/movieabout">即将上映</NavLink>
-          <Redirect to="/movielists" />
         </MainWarp>
         <Router>
           <Switch>
@@ -42,21 +41,20 @@ export default class index extends Component {
       </Movietop>
     )
   }
+  // 开启监听
   componentDidMount() {
-    window.addEventListener('scroll', this.onscroll, true);
+    document.getElementsByClassName('elkAqb')[0].addEventListener('scroll', this.onscroll);
   }
+  // 关闭
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.onscroll, true)
+    document.getElementsByClassName('elkAqb')[0].removeEventListener("scroll", this.onscroll)
   }
   onscroll() {
-    // console.log(window.scrollY)
     // 滚动条距离顶部的高度
     let scrolltop = document.getElementsByClassName('elkAqb')[0].scrollTop;
-    // console.log(scrolltop)
     if (scrolltop > 210) {
       document.getElementsByClassName('movie-top')[0].style.display = "block"
       document.getElementsByClassName('movie-nav')[0].style = "position:fixed;top:44px"
-
     } else {
       document.getElementsByClassName('movie-top')[0].style.display = "none"
       document.getElementsByClassName('movie-nav')[0].style = ""

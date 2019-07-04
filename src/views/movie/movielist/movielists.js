@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { MainWrap, MovieLi } from './liststyle.js'
 import http from '../../../utils/http1.js'
+import { NavLink } from 'react-router-dom'
+
 export default class index extends Component {
   constructor(props) {
     super(props)
@@ -19,31 +21,33 @@ export default class index extends Component {
           {
             movielist.map(item => {
               return (
-                <li key={item.filmId}>
-                  <MovieLi>
-                    <div className="movieimg">
-                      <img alt="" src={`${item.poster}`} />
-                    </div>
-                    <div className="movie-details">
-                      <div className="movie-name">
-                        <span className="movie-name-l">{item.name}</span>
-                        <span className="movie-name-r">{item.item.name}</span>
+                <li key={item.filmId} onClick={this.openAbout.bind(this, item.filmId)}>
+                  <NavLink to="/movieaboutlist">
+                    <MovieLi>
+                      <div className="movieimg">
+                        <img alt="" src={`${item.poster}`} />
                       </div>
-                      <div className="movie-num">
-                        <span className="movie-num-l">观众评分</span>
-                        <span className="movie-num-r">{item.grade}</span>
+                      <div className="movie-details">
+                        <div className="movie-name">
+                          <span className="movie-name-l">{item.name}</span>
+                          <span className="movie-name-r">{item.item.name}</span>
+                        </div>
+                        <div className="movie-num">
+                          <span className="movie-num-l">观众评分</span>
+                          <span className="movie-num-r">{item.grade}</span>
+                        </div>
+                        <div className="movie-actor">
+                          <span className="movie-actor-l">主演:{item.director}</span>
+                        </div>
+                        <div className="movie-nation">
+                          <span className="movie-nation-c">{item.nation} | {item.runtime}分钟</span>
+                        </div>
                       </div>
-                      <div className="movie-actor">
-                        <span className="movie-actor-l">主演:{item.director}</span>
+                      <div className="movie-buy">
+                        购票
                       </div>
-                      <div className="movie-nation">
-                        <span className="movie-nation-c">{item.nation} | {item.runtime}分钟</span>
-                      </div>
-                    </div>
-                    <div className="movie-buy">
-                      购票
-                      </div>
-                  </MovieLi>
+                    </MovieLi>
+                  </NavLink>
                 </li>
               )
             })
@@ -52,13 +56,18 @@ export default class index extends Component {
       </MainWrap>
     )
   }
+  // https://m.maizuo.com/gateway?filmId=4703&k=3555362
+  openAbout(filmId) {
+    // this.props.history.push('./movieaboutlist')
+    console.log(this.props.history, filmId)
+  }
   componentDidMount() {
     this.getmovielist()
-    window.addEventListener('scroll', this.onscroll, true);
+    document.getElementsByClassName('elkAqb')[0].addEventListener('scroll', this.onscroll, true);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onscroll, true)
+    document.getElementsByClassName('elkAqb')[0].removeEventListener('scroll', this.onscroll, true)
   }
   // 获取影片数据
   getmovielist(loading) {

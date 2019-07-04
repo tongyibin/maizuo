@@ -20,6 +20,11 @@ const Main = Loadable({
   loader: () => import('./views/index.js'),
   loading: () => <div>加载中</div>
 })
+// 详情页
+const MovieAbourList = Loadable({
+  loader: () => import('./views/movie/movielistAbout/index.js'),
+  loading: () => <div>加载中</div>
+})
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -34,6 +39,7 @@ export default class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/city" component={City} />
+          <Route path="/movieaboutlist" component={MovieAbourList} />
           <Route path="/" component={Main} className="movie-main" />
           <Redirect to="/" />
         </Switch>
