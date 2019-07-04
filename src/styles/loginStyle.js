@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LoginHeaderWarp = styled.div`
-    overflow-x: hidden;
+    overflow-y: hidden;
     background-color: #fff;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);

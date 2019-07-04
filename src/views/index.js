@@ -25,19 +25,24 @@ const Movie = Loadable({
 
   loading: () => <div>加载中</div>
 })
+const User = Loadable({
+
+  loader: () => import('../views/mine/user'),
+
+  loading: () => <div>加载中</div>
+})
 export default class index extends Component {
   render() {
     return (
       <HomeWarp>
         <MainWarp>
-          <Router>
-            <Switch>
-              <Route path="/mine" component={Mine} />
-              <Route path="/cinema" component={Cinema} />
-              <Route path="/" component={Movie} />
-              <Redirect to="/movielists" />
-            </Switch>
-          </Router>
+          <Switch>
+            <Route path="/mine" component={Mine} />
+            <Route path="/user" component={User} />
+            <Route path="/cinema" component={Cinema} />
+            <Route path="/" component={Movie} />
+            <Redirect to="/movielists/1" />
+          </Switch>
         </MainWarp>
         <NavWarp>
           <NavLink to="/movie" className="nav-bottom"  >
@@ -48,15 +53,19 @@ export default class index extends Component {
             <Icon type="dot-chart" style={{ fontSize: '21px' }} />
             <span>影院</span>
           </NavLink>
-          <NavLink to="/mine" className="nav-bottom">
+          <div className="nav-bottom" onClick={this.changeuser}>
             <Icon type="user" style={{ fontSize: '21px' }} />
             <span>我的</span>
-          </NavLink>
+          </div>
         </NavWarp>
       </HomeWarp>
     )
   }
-
-
-
+  changeuser = () => {
+    if (localStorage.getItem("user") != null) {
+      this.props.history.push('/user')
+    } else {
+      this.props.history.push('/mine')
+    }
+  }
 }

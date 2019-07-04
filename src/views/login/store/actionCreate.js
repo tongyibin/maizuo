@@ -29,13 +29,11 @@ export const asyncSignIn = (values,props) =>{
     //      return alert("错误")
     //    }
     // })
-      console.log(values.text);
-      console.log(props);
       http.get('/sign').then(response => {
         console.log(response.data.text);
         let res = response.data.text
         if(values.text === res){
-          window.localStorage.setItem('user',JSON.stringify(values.text))
+          window.localStorage.setItem('user',JSON.stringify(values.tel))
           let redirect = props.location.state ? props.location.state.redirect : '/'
           props.history.replace(redirect);
         }else{

@@ -1,22 +1,22 @@
 // 我的页面
 import React, { Component } from 'react'
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Route, Link, Switch, Redirect, Icon } from 'react-router-dom'
 import {
   HeardWarp, CenterWarp, AvatWarp, ImgWarp, AvdivWarp, UlWarp, LiWarp, DyddImgWarp, DyddDivWarp, DyddSpanWarp,
   SpddImgWarp, SpddDivWarp, MarginSetWarp, MzjImgWarp, MzjSpanWarp, MzjImgIconWarp, YeSpan
 } from '../../styles/mineStyle'
 
 
-export default class index extends Component {
+export default class user extends Component {
   render() {
-
+    console.log(this.props)
     return (
       <HeardWarp>
-        <div onClick={this.log}>
+        <div>
           <CenterWarp>
             <AvatWarp>
               <ImgWarp src={require('./img/loginpoto.png')} />
-              <AvdivWarp>立即登录</AvdivWarp>
+              <AvdivWarp>手机用户-1111111111-欢迎您</AvdivWarp>
             </AvatWarp>
             <UlWarp>
               <LiWarp>
@@ -54,17 +54,21 @@ export default class index extends Component {
               <MzjSpanWarp>设置</MzjSpanWarp>
               <MzjImgIconWarp src={require('./img/up.png')} />
             </MarginSetWarp>
+
+            <MarginSetWarp onClick={this.changeout}>
+              <MzjImgWarp />
+              <MzjSpanWarp>退出</MzjSpanWarp>
+              <MzjImgIconWarp src={require('./img/up.png')} />
+            </MarginSetWarp>
           </CenterWarp>
         </div>
       </HeardWarp>
 
     )
   }
-  log = () => {
-    if (localStorage.getItem("user") != null) {
-    } else {
-      this.props.history.push('/login')
-    }
+  changeout = () => {
+    localStorage.removeItem("user");
+    this.props.history.push('/mine')
   }
-  // let ss = localStorage.getItem("key");
+
 }
