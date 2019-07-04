@@ -1,6 +1,7 @@
 // 登录注册页面
 import React, { Component } from 'react'
 import { LoginHeaderWarp,AppWarp,WebLoginWarp,WebImgWarp,LogoWarp,LoginFromWarp } from '../../styles/loginStyle'
+import { Link } from 'react-router-dom'
 import { Form, Input, Button } from 'antd';
 import {connect} from 'react-redux';
 import * as Types from './store/actionCreate'
@@ -21,12 +22,14 @@ class login extends Component {
   render() {
       const { getFieldDecorator } = this.props.form;
     return (
-      <LoginHeaderWarp>
+      <LoginHeaderWarp style={{'overflow-y': 'hidden'}}>
         <AppWarp>
           <div>
             <WebLoginWarp>
               <LogoWarp>
+                <Link to="/">
                  <WebImgWarp src='https://assets.maizuo.com/h5/mz-auth/public/app/img/logo.19ca0be.png' />
+                 </Link>
               </LogoWarp>
               <LoginFromWarp>
                 <AppWarp>
@@ -40,7 +43,7 @@ class login extends Component {
                             {pattern: /[0-9]{11}/ ,message:'手机号格式有误' }
                           ],
                         })(
-                          <Input  placeholder="手机号" className="input-control" />
+                          <Input  placeholder="手机号" className="input-control" autocomplete="off"/>
                         )
                       }
                     </Form.Item>
@@ -54,7 +57,7 @@ class login extends Component {
                             {min: 6 ,max: 6, message: '验证码为6位数' }
                           ],
                         })(
-                          <Input placeholder="验证码" className="input-control"/>
+                          <Input placeholder="验证码" className="input-control" autocomplete="off"/>
                         )
                       }
                     </Form.Item>
@@ -82,6 +85,7 @@ export default connect(null,
   (dispatch,props)=>({
     handleSignIn (values) {
       dispatch(Types.asyncSignIn(values,props))
+
     }
   })
 )(LoginUi)

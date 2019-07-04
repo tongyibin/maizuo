@@ -25,9 +25,7 @@ export default class index extends Component {
       // window.location.reload()
     }
   }
-  componentWillUnmount() {
-    // this.chglocation()
-  }
+
 
 }
 
