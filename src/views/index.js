@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Loadable from 'react-loadable'
 import { Icon } from 'antd'
-import { Route, NavLink, Redirect, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 import { HomeWarp, MainWarp, NavWarp } from '../styles/style.js'
 
 // 个人中心
@@ -30,12 +30,14 @@ export default class index extends Component {
     return (
       <HomeWarp>
         <MainWarp>
-          <Switch>
-            <Route path="/mine" component={Mine} />
-            <Route path="/cinema" component={Cinema} />
-            <Route path="/" component={Movie} />
-            <Redirect to="/movielists/1" />
-          </Switch>
+          <Router>
+            <Switch>
+              <Route path="/mine" component={Mine} />
+              <Route path="/cinema" component={Cinema} />
+              <Route path="/" component={Movie} />
+              <Redirect to="/movielists" />
+            </Switch>
+          </Router>
         </MainWarp>
         <NavWarp>
           <NavLink to="/movie" className="nav-bottom"  >
@@ -54,4 +56,7 @@ export default class index extends Component {
       </HomeWarp>
     )
   }
+
+
+
 }

@@ -10,6 +10,8 @@ export const MainWrap = Styled.div`
     margin-top: 0;
     dispaly:flex;
     display:block;
+    background: #fff;
+
     li{
       overflow: hidden;
     }
@@ -78,6 +80,13 @@ export const MovieLi = Styled.div`
             text-align: center;
             border: 1px solid #ff5f16;
             border-radius: 4px;
+          }
+          .movie-actor{
+            overflow: hidden;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
           }
 
 `

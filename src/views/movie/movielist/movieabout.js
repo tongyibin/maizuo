@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { MainWrap, MovieLi } from './liststyle.js'
 import http from '../../../utils/http1.js'
-export default class index extends Component {
+
+let isLoading = false;
+
+export default class Movieabout extends Component {
   constructor(props) {
     super(props)
     this.state = {
       movielist: [],
+      name: [],
       num: 1,
       isok: false,
-      loading: false
+      loading: false,
     }
   }
   render() {
@@ -29,10 +33,7 @@ export default class index extends Component {
                         <span className="movie-name-l">{item.name}</span>
                         <span className="movie-name-r">{item.item.name}</span>
                       </div>
-                      <div className="movie-num">
-                        <span className="movie-num-l">观众评分</span>
-                        <span className="movie-num-r">{item.grade}</span>
-                      </div>
+
                       <div className="movie-actor">
                         <span className="movie-actor-l">主演:{item.director}</span>
                       </div>
@@ -41,7 +42,7 @@ export default class index extends Component {
                       </div>
                     </div>
                     <div className="movie-buy">
-                      购票
+                      预购
                       </div>
                   </MovieLi>
                 </li>
@@ -56,40 +57,28 @@ export default class index extends Component {
     this.getmovielist()
     window.addEventListener('scroll', this.onscroll, true);
   }
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onscroll, true)
+    console.log(2)
   }
   // 获取影片数据
-  getmovielist(loading) {
-    this.setState({
-      isok: true
-    })
+  getmovielist() {
+    isLoading = true;
     setTimeout(() => {
-      http.get(`/gateway?cityId=110100&pageNum=${this.state.num}&pageSize=10&type=1&k=4627969`, {
+      http.get(`/gateway?cityId=110100&pageNum=${this.state.num}&pageSize=10&type=2&k=434549`, {
         headers: {
           'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"15593866704561255269582"}',
           'X-Host': 'mall.film-ticket.film.list'
         }
       }).then(res => {
-        // loading存在说明已经发送了第一次请求
-        if (loading) {
-          let movielists = [...this.state.movielist, ...res.data.films]
-          this.setState({
-            movielist: movielists
-          })
-        } else {
-          this.setState({
-            movielist: res.data.films,
-          })
-        }
-        let i = this.state.num += 1
+        let movielists = [...this.state.movielist, ...res.data.films];
+        let nextNum = this.state.num += 1;
+        isLoading = false;
         this.setState({
-          isok: false,
-          num: i
+          movielist: movielists,
+          num: nextNum,
         })
       })
-
     }, 300);
   }
   onscroll = () => {
@@ -102,7 +91,7 @@ export default class index extends Component {
     let clientheight = document.getElementsByClassName('elkAqb')[0].clientHeight
     // console.log(scrolltop, scrollheight, clientheight)
     if ((scrollheight - scrolltop - clientheight) < 80) {
-      if (!this.state.isok) {
+      if (!isLoading) {
         // 是否加载更多数据
         this.getmovielist(true)
       }
