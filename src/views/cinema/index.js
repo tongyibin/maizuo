@@ -58,8 +58,6 @@ export default class index extends Component {
     })
       .then(res => {
         let newRes = res.data;
-        console.log(newRes);
-        console.log(newRes.data.cinemas[0].lowPrice.toString())
         if (newRes.status === 0) {
           this.setState({
             siteList: newRes.data.cinemas
