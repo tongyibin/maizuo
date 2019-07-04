@@ -12,12 +12,11 @@ export default class index extends Component {
     }
   }
   render() {
-    console.log(this.state.siteList)
     return (
       <div>
         <Header>
           <ul className= "citySelection">
-            <li><Link to="/daye">地址</Link></li>
+            <li><Link to="/city">地址</Link></li>
             <li>影院</li>
             <li><Link to="/cinema/search">搜索</Link></li>
           </ul>
@@ -58,8 +57,6 @@ export default class index extends Component {
     })
     .then(res=>{
       let newRes = res.data;
-      console.log(newRes);
-      console.log(newRes.data.cinemas[0].lowPrice.toString())
       if(newRes.status === 0){
         this.setState({
           siteList: newRes.data.cinemas

@@ -33,7 +33,7 @@ export const Header = styled.div`
 `
 export const List = styled.div`
 ul{
-  margin-top:94px;
+  margin-top:110px;
 }
 ul>li{
   background:#fff;
